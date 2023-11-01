@@ -1,27 +1,23 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET } from "./api";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET } from './Api';
+import { useNavigate } from 'react-router-dom';
 
 export const UserContext = React.createContext();
 
 export const UserStorage = ({ children }) => {
-  const [data, setData] = useState(null);
-  const [login, setLogin] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [data, setData] = React.useState(null);
+  const [login, setLogin] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState(null);
   const navigate = useNavigate();
 
-  const userLogout = useCallback(
-    async function () {
-      setData(null);
-      setError(null);
-      setLoading(false);
-      setLogin(false);
-      window.localStorage.removeItem("token");
-      navigate("/login");
-    },
-    [navigate]
-  );
+  const userLogout = React.useCallback(async function () {
+    setData(null);
+    setError(null);
+    setLoading(false);
+    setLogin(false);
+    window.localStorage.removeItem('token');
+  }, []);
 
   async function getUser(token) {
     const { url, options } = USER_GET(token);
@@ -39,9 +35,9 @@ export const UserStorage = ({ children }) => {
       const tokenRes = await fetch(url, options);
       if (!tokenRes.ok) throw new Error(`Error: ${tokenRes.statusText}`);
       const { token } = await tokenRes.json();
-      window.localStorage.setItem("token", token);
+      window.localStorage.setItem('token', token);
       await getUser(token);
-      navigate("/conta");
+      navigate('/conta');
     } catch (err) {
       setError(err.message);
       setLogin(false);
@@ -50,22 +46,24 @@ export const UserStorage = ({ children }) => {
     }
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     async function autoLogin() {
-      const token = window.localStorage.getItem("token");
+      const token = window.localStorage.getItem('token');
       if (token) {
         try {
           setError(null);
           setLoading(true);
           const { url, options } = TOKEN_VALIDATE_POST(token);
           const response = await fetch(url, options);
-          if (!response.ok) throw new Error("Token inválido");
+          if (!response.ok) throw new Error('Token inválido');
           await getUser(token);
         } catch (err) {
           userLogout();
         } finally {
           setLoading(false);
         }
+      } else {
+        setLogin(false);
       }
     }
     autoLogin();

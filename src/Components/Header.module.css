@@ -3,8 +3,7 @@
   position: fixed;
   width: 100%;
   z-index: 100;
-  background: rgb(31, 30, 30);
-  /* background: white; */
+  background: white;
   top: 0px;
 }
 
@@ -15,7 +14,7 @@
   height: 4rem;
 }
 
-.log {
+.logo {
   padding: 0.5rem 0;
 }
 
@@ -26,11 +25,11 @@
 }
 
 .login::after {
-  content: "";
+  content: '';
   display: inline-block;
   width: 14px;
   height: 17px;
-  background: url("../Assets/usuario.svg") no-repeat center center;
+  background: url('../Assets/usuario.svg') no-repeat center center;
   margin-left: 0.5rem;
   position: relative;
   top: -1px;
