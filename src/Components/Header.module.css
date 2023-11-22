@@ -3,7 +3,8 @@
   position: fixed;
   width: 100%;
   z-index: 100;
-  background: white;
+  /* background: white; */
+  background: rgb(39, 37, 37);
   top: 0px;
 }
 
