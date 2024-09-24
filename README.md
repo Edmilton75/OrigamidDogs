@@ -1,6 +1,6 @@
 ## Projeto desenvolvido durante o curso de React da Origamid
 
-```markdown
+
 # Rede Social Dogs
 
 ## Descrição
@@ -15,11 +15,11 @@ Para instalar o projeto, siga os passos abaixo:
 
 1. Clone o repositório:
    ```bash
-   git clone git@github.com:Edmilton75/origamidDog.git
+   git clone git@github.com:Edmilton75/OrigamidDogs.git
    ```
 2. Navegue até o diretório do projeto:
    ```bash
-   cd rede-social-dogs
+   cd OrigamidDogs
    ```
 3. Instale as dependências:
    ```bash
