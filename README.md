@@ -1,4 +1,4 @@
-## Projeto implementado do curso de React da escola Origamid
+## Projeto desenvolvido durante o curso de React da Origamid
 
 ```markdown
 # Rede Social Dogs
